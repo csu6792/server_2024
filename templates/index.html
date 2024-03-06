@@ -1,0 +1,365 @@
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!--<link rel="icon" href="/static/images/camera-remote-control.png">-->
+	
+	<!--<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>-->
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="/static/css/all.css">
+    <link rel="stylesheet" href="/static/css/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link href="/static/css/css/album.css" rel="stylesheet">
+	<script src="static/janus.js"></script>
+    <script src="static/adapter.min.js"></script>
+    <script src="static/streaming.js"></script>
+    <script src="static/control.js"></script>
+    <script src="static/main.js"></script>
+	
+	
+    <title>機械手臂遠端控制系統</title>
+	<style>
+	.back-to-top {
+    position:fixed;
+    z-index:90;
+    right:25px;
+    bottom:25px;
+    display:none;
+    width:50px;
+    height:50px;
+    color:#fff;
+    background:#33b5e5;
+    line-height:50px;
+    border-radius:50%;
+    transition:all 0.5s;
+    text-align: center;
+	.back-to-top :hover{
+    background:#0099CC;
+    }
+	#info {
+        text-align: center;
+        margin: 2rem;
+      }
+      #round-button {
+        width: 100px;
+        height: 100px;
+        border: 5px solid rgba(0, 0, 0, 0.5);
+        border-radius: 100%;
+        background: #ccc;
+        margin: auto auto;
+      }
+      #round-button.disconnected {
+        background: #dd4433;
+      }
+      #round-button.connected {
+        background: #33aa44;
+      }
+      #status {
+        margin-top: 0.5rem;
+      }
+	</style>
+  </head>
+
+<body>
+<nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">機械手臂遠端控制系統</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample01">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		  <a class="nav-link" href="/">首頁</a>
+		  </li>
+        </ul>
+      </div>
+    </nav>
+
+<!--<div class="alert alert-danger" role="alert">
+  系統測試中!
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>-->
+
+<main role="main">
+<form action="" name="">
+
+
+<div class="album py-5 bg-light">
+
+<div class="container">
+
+
+<!--<div class="alert alert-primary alert-dismissible fade" role="alert">
+    遠端控制未連線
+  </div>-->
+
+<!--<button type="button" id="product_out" class="btn btn-success my-2" name="product_out" class="float-right">前進</button>
+<button type="button" id="product_out2" class="btn btn-success my-2" name="product_out" class="float-right">左轉</button>
+<button type="button" id="product_out3" class="btn btn-success my-2" name="product_out" class="float-right">右轉</button>
+<button type="button" id="product_out4" class="btn btn-success my-2" name="product_out" class="float-right">後退</button>
+<button type="button" id="product_out1" class="btn btn-danger my-2" name="product_out" class="float-right">停止</button>-->
+
+
+<!--<div class="spinner-grow" role="status" id="state_2">
+  <span class="sr-only">Loading...</span>
+</div>-->
+
+
+
+<!--<h3><i class="fas fa-mouse" id="state_4" ></i> <i class="fas fa-arrows-alt" id="state_3" ></i></h3>-->
+<!--<div id="info">
+        <div id="round-button"></div>
+      </div>-->
+
+<!--<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+<div class="col-md-5">
+<div class="card mb-5 box-shadow">
+      <video id="video"  autoplay muted playsinline ></video>
+<div class="card-body">
+<i class="fas fa-video"></i>
+
+
+<span id="battery_level"></span>
+
+</div>
+</div>
+</div>
+
+<div class="col-md-5">
+<div class="card mb-4 box-shadow">
+<div id="map" class="z-depth-1-half map-container" style="height: 400px"></div>
+<div class="card-body">
+<i class="fas fa-map-marked-alt"></i>
+<span class="badge rounded-pill bg-warning text-dark" id="state_1">狀態確認中</span>
+
+</div>
+</div>
+</div>
+
+</div>-->
+
+<div class="row justify-content-md-center">
+    <div class="col">
+	  <div class="box">
+		<img src="" id="videoElement">
+	    <!--<video id="video"  autoplay muted playsinline width="640px" height="480px"></video>-->
+	  </div>
+	  <div class="box-body">
+		<!--<i class="fas fa-video"></i>-->
+		<!--<button type="button" id="product_out" class="btn btn-success my-2" name="product_out" class="float-right">Forward</button>
+		<button type="button" id="product_out2" class="btn btn-success my-2" name="product_out" class="float-right">Left</button>
+		<button type="button" id="product_out3" class="btn btn-success my-2" name="product_out" class="float-right">Right</button>
+		<button type="button" id="product_out4" class="btn btn-success my-2" name="product_out" class="float-right">Back</button>
+		<button type="button" id="product_out1" class="btn btn-danger my-2" name="product_out" class="float-right">stop</button>
+		<button type="button" id="product_out5" class="btn btn-danger my-2" name="product_out" class="float-right">home</button>
+		<button type="button" id="product_out6" class="btn btn-danger my-2" name="product_out" class="float-right">up</button>
+		<button type="button" id="product_out7" class="btn btn-danger my-2" name="product_out" class="float-right">down</button>
+		<button type="button" id="product_out8" class="btn btn-danger my-2" name="product_out" class="float-right">clear</button>
+		<strong><i class="fas fa-mouse" id="state_4" ></i> <i class="fas fa-arrows-alt" id="state_3" ></i></strong>
+		&nbsp;&nbsp;&nbsp;<button type="button" id="product_out6" class="btn btn-danger my-2" name="product_out" class="float-right">關機</button>-->
+		<!--&nbsp;<input type="button" id="product_out6" style="background-image:url('/static/images/power-button.png');width:32px;height:32px;">-->
+		<!--<div class="spinner-grow" role="status" id="state_2">
+		<span class="sr-only">Loading...</span>
+		</div>-->
+	  </div>
+	</div>
+	
+	<div class="row mb-3">
+      <div class="col-md-12 themed-grid-col">
+		<div class="row">
+          <div class="col-md-4 themed-grid-col"></div>
+          <div class="col-md-4 themed-grid-col text-center"><button type="button" id="product_out" class="btn btn-success my-2" name="product_out" class="float-right"><i class="fas fa-chevron-up" style='font-size:24px'></i>Forward</button></div>
+		  <div class="col-md-4 themed-grid-col"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 themed-grid-col text-center"><button type="button" id="product_out2" class="btn btn-success my-2" name="product_out" class="float-right"><i class="fas fa-chevron-left" style='font-size:24px'></i><br>Left </button></div>
+          <div class="col-md-4 themed-grid-col text-center"><button type="button" id="product_out1" class="btn btn-danger my-2" name="product_out"><i class="fas fa-stop" style='font-size:24px'></i>Stop</button></div>
+		  <div class="col-md-4 themed-grid-col text-center"><button type="button" id="product_out3" class="btn btn-success my-2" name="product_out" class="float-right"><i class="fas fa-chevron-right" style='font-size:24px'></i>Right</button></div>
+        </div>
+		<div class="row">
+          <div class="col-md-4 themed-grid-col "></div>
+          <div class="col-md-4 themed-grid-col text-center"><button type="button" id="product_out4" class="btn btn-success my-2" name="product_out" class="float-right"><i class="fas fa-chevron-down" style='font-size:24px'></i>Back</button></div>
+		  <div class="col-md-4 themed-grid-col "></div>
+        </div>
+		
+		  <div class="row">
+          <div class="col-md-3 themed-grid-col text-center"><button type="button" id="product_out6" class="btn btn-dark my-2" name="product_out" class="float-right"><i class="fas fa-sort-up" style='font-size:24px'></i>up</button></div>
+          <div class="col-md-3 themed-grid-col text-center"><button type="button" id="product_out7" class="btn btn-dark my-2" name="product_out" class="float-right"><i class="fas fa-sort-down" style='font-size:24px'></i>down</button></div>
+		  <div class="col-md-3 themed-grid-col text-center"><button type="button" id="product_out5" class="btn btn-warning my-2" name="product_out" class="float-right"><i class="fas fa-house" style='font-size:24px'></i>home</button></div>
+		  <div class="col-md-3 themed-grid-col text-center"><button type="button" id="product_out8" class="btn btn-danger my-2" name="product_out" class="float-right">clear</button></div>
+        </div>
+      </div>
+	  
+
+	
+
+      <!--<div class="col-md-4 themed-grid-col">.col-md-4</div>-->
+    </div>
+	
+	<div class="col">
+	<div class="box">
+
+
+	
+      <!--<div id="joy3Div" style="width:200px;height:200px"></div>-->
+	  <!--<img id="img" style="width:400px; height: 400px;"/>-->
+	  </div>
+	  <div class="box-body">
+	  <i class="fas fa-link"></i>
+	  <span class="badge rounded-pill bg-warning text-dark" id="state_1">狀態確認中</span>
+	  <span class="badge rounded-pill bg-warning text-dark" id="state_temp">溫度</span>
+	  </div>
+    </div>
+	
+	<div class="row mb-3">
+      <div class="col-md-12 themed-grid-col">
+	  <div class="row">
+	  
+		<div class="input-group">
+		<input type="file" class="form-control" id="fileInput" aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept=".xlsx">
+		<button class="btn btn-outline-secondary" type="button" id="upload">upload excel</button>
+		<button type="button" id="product_out9" class="btn btn-dark" name="product_out"><i class="fas fa-play"></i>loop</button>
+		</div>
+		 <!--<input type="button" onclick="location.href='/view';" value="Go to Google" />-->
+		<!--<div class="col-md-4 themed-grid-col text-center"><input type='file' id='fileInput' name='fileInput' accept=".xlsx"/></div>
+		<div class="col-md-4 themed-grid-col text-center"><button  id="upload" type="button"  name="button" class="btn btn-primary my-2">upload excel</button></div>
+		<div class="col-md-4 themed-grid-col text-center"><button type="button" id="product_out9" class="btn btn-dark my-2" name="product_out" class="float-right"><i class="fas fa-play" style='font-size:48px'></i>loop</button></div>-->
+	  </div>
+	  </div>
+	  </div>
+
+  
+	<!--<div class="col">
+	<div class="box">
+	<div id="temp_realtime" style="width: 400px;height:400px;"></div>
+	</div>
+	</div>-->
+  </div>
+
+
+</div>
+
+
+  
+<a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+
+</div>
+</form>
+
+</main>
+
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="mb-1"><i class="fas fa-code"></i>設計:工學院</p>
+  </div>
+</footer>
+
+<div class="modal fade" id="message_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">提示</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="message_data2"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<script src="/static/js/jquery.min.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>-->
+<script src="/static/js/popper.min.js"  crossorigin="anonymous"></script>
+<script src="/static/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="static/joy.js"></script>
+<script src="static/gamecontroller.min.js"></script>
+<script src="static/mainserver.js"></script>
+<script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+<script src="static/socket.io.js" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+	$(window).scroll(function () {
+			if ($(this).scrollTop() > 50) {
+				$('#back-to-top').fadeIn();
+			} else {
+				$('#back-to-top').fadeOut();
+			}
+		});
+		// scroll body to 0px on click
+		$('#back-to-top').click(function () {
+			$('body,html').animate({
+				scrollTop: 0
+			}, 400);
+			return false;
+		});
+		//$("img").attr("src",'/static/images/temp.jpg')
+		document.getElementById('product_out9').style.display = 'none';
+	
+	
+});
+
+const socket = io();
+        const videoElement = document.getElementById('videoElement');
+
+        socket.on('frame', function(data) {
+            videoElement.src = 'data:image/jpeg;base64,' + data.image;
+        });
+		
+		socket.on('status_response', function(data) {
+		//console.log(data);
+		if(data['topic']=='/csu6792/sensor_1'){
+		var newdata = JSON.parse(data['payload'])
+		console.log(newdata[0]['value']);
+		$('#state_temp').text(newdata[0]['value']);
+		}
+		if(data['topic']=='/csu6792/sensor_2'){
+		var newdata = JSON.parse(data['payload'])
+		//console.log(JSON.parse(newdata['id']));
+		}
+		});
+
+$("#upload").click(function(){
+var fileInput = document.getElementById('fileInput');
+var file = fileInput.files[0];
+var formData = new FormData();
+formData.append('file', file);
+/*var xhr = new XMLHttpRequest();
+xhr.open('POST', '/upexcel', true);
+xhr.send(formData);*/
+  $.ajax({
+    type: 'post',
+    url: "upexcel", //上传文件的请求路径必须是绝对路劲
+    data: formData,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success:function(data){
+		$("#product_out9").removeClass('disabled');
+		console.log("ok");
+		$("#message_data2").text('上傳成功');
+		$("#message_2").modal('show');
+		document.getElementById('product_out9').style.display = 'block';
+    },
+    error:function(jqXHR){
+      // 这里是访问失败时被自动调用的代码
+    }
+  });
+});
+
+</script>
+</body>
